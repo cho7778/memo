@@ -94,13 +94,22 @@
       // 삭제
 
       function deleteMemo(event) {
-        // if(event.target.id === 'btn-delete') {
-        //     const aa = memoList.splice(item =>{
-        //         event.target.
-        //     })
-        // }
-        console.log(event);
-        console.log(!!(event.target.id === "btn-delete"));
+        const response = confirm("정말 삭제하시겠습니까?");
+        if (response) {
+          const getTitle = event.target.parentElement.querySelector("h2");
+          const getContent = event.target.parentElement.querySelector("p");
+
+          memoList = memoList.filter(
+            (item) =>
+              item.title !== getTitle.textContent &&
+              item.content.textContent !== getContent
+          );
+
+          localStorage.setItem("memoList", JSON.stringify(memoList));
+
+          const targetDiv = event.target.parentElement;
+          targetDiv.remove();
+        }
       }
 
       // 수정
