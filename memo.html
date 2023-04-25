@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memo</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <style>
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <input type="text" name="" id="title" />
+        <textarea name="" id="content" cols="30" rows="10"></textarea>
+        <button id="btn-save" onclick="saveMemo()">저장</button>
+      </section>
+      <section id="display"></section>
+    </main>
+    <script>
+      const targetInput = document.querySelector("#title");
+      const targetTxt = document.querySelector("#content");
+      const targetBtn = document.querySelector("#btn-save");
+      let memoList = JSON.parse(localStorage.getItem("memoList"));
+      memoList = memoList ?? [];
+
+      // setItem() - key, value 추가
+      // getItem() - value 읽어 오기
+      // removeItem() - item 삭제
+      // clear() - 도메인 내의 localStorage 값 삭제
+      // length - 전체 item 갯수
+      // key() - index로 key값 찾기
+
+      // 저장
+      function saveMemo() {
+        const title = targetInput.value;
+        const content = targetTxt.value;
+        // console.log(title, content);
+
+        if (title && content) {
+          memoList.push({ title, content });
+          localStorage.setItem("memoList", JSON.stringify(memoList));
+        } else {
+          alert("제목 혹은 내용을 입력해주세요.");
+        }
+      }
+
+      // 삭제
+
+      // 수정
+    </script>
+  </body>
+</html>
