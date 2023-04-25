@@ -19,7 +19,7 @@
       <section>
         <input type="text" name="" id="title" />
         <textarea name="" id="content" cols="30" rows="10"></textarea>
-        <button id="btn-save" onclick="saveMemo()">저장</button>
+        <button id="btn-save" onclick="addMemo()">저장</button>
       </section>
       <section id="display"></section>
     </main>
@@ -27,8 +27,12 @@
       const targetInput = document.querySelector("#title");
       const targetTxt = document.querySelector("#content");
       const targetBtn = document.querySelector("#btn-save");
+      const display = document.querySelector("#display");
       let memoList = JSON.parse(localStorage.getItem("memoList"));
       memoList = memoList ?? [];
+      render();
+
+      //   console.log(localStorage.getItem);
 
       // setItem() - key, value 추가
       // getItem() - value 읽어 오기
@@ -37,8 +41,31 @@
       // length - 전체 item 갯수
       // key() - index로 key값 찾기
 
+      // 렌더링
+      function render() {
+        const data = JSON.parse(localStorage.getItem("memoList"));
+
+        for (let i = 0; i < memoList.length; i++) {
+          const memoCard = `<div class="memo${i + 1}">
+                <h2></h2>
+                <button type="button" id="btn-edit">수정</button>
+                <button type="button" id="btn-delete">삭제</button>
+                <p></p>
+                </div>`;
+          display.insertAdjacentHTML("beforeend", memoCard);
+          const memoTitle = display.querySelector(`.memo${i + 1} h2`);
+          const memoTxt = display.querySelector(`.memo${i + 1} p`);
+
+          memoTitle.textContent = data[i].title;
+          memoTxt.textContent = data[i].content;
+
+          console.log(memoTitle.textContent);
+          console.log(memoTxt.textContent);
+        }
+      }
+
       // 저장
-      function saveMemo() {
+      function addMemo() {
         const title = targetInput.value;
         const content = targetTxt.value;
         // console.log(title, content);
@@ -50,16 +77,7 @@
           alert("제목 혹은 내용을 입력해주세요.");
         }
 
-        // const addTitle = document.createElement("h2");
-        // const addTxt = document.createElement("p");
-
-        // addTitle.textContent = targetInput.value;
-        // addTxt.textContent = targetTxt.value;
-
-        // console.log("addTitle", addTitle);
-        // console.log("addTxt", addTxt);
-
-        const addMemo = document.querySelector("#display").insertAdjacentHTML(
+        display.insertAdjacentHTML(
           `beforeend`,
           `<div class="memo">
                 <h2>${targetInput.value}</h2>
@@ -68,7 +86,6 @@
                     <p>${targetTxt.value}</p>
                 </div>`
         );
-        console.log("done!");
       }
 
       // 삭제
