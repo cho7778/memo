@@ -49,6 +49,26 @@
         } else {
           alert("제목 혹은 내용을 입력해주세요.");
         }
+
+        // const addTitle = document.createElement("h2");
+        // const addTxt = document.createElement("p");
+
+        // addTitle.textContent = targetInput.value;
+        // addTxt.textContent = targetTxt.value;
+
+        // console.log("addTitle", addTitle);
+        // console.log("addTxt", addTxt);
+
+        const addMemo = document.querySelector("#display").insertAdjacentHTML(
+          `beforeend`,
+          `<div class="memo">
+                <h2>${targetInput.value}</h2>
+                <button type="button" id="btn-edit">수정</button>
+                <button type="button" id="btn-delete">삭제</button>
+                    <p>${targetTxt.value}</p>
+                </div>`
+        );
+        console.log("done!");
       }
 
       // 삭제
