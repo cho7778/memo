@@ -91,6 +91,7 @@
           localStorage.setItem("memoList", JSON.stringify(memoList));
         } else {
           alert("제목 혹은 내용을 입력해주세요.");
+          return;
         }
 
         display.insertAdjacentHTML(
