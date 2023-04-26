@@ -1,3 +1,4 @@
+/* reset */
 body {
   margin: 0;
 }
@@ -5,7 +6,7 @@ h1,
 h2 {
   margin: 0;
 }
-/*common*/
+/* common */
 .blink {
   animation: blink 1s linear infinite;
   -webkit-animation: blink 1s linear infinite;
@@ -13,12 +14,12 @@ h2 {
 
 @keyframes blink {
   10% {
-    color: #a9907e;
-    stroke: #a9907e;
+    color: #675d50;
+    stroke: #675d50;
   }
   50% {
-    color: #a9907e;
-    stroke: #a9907e;
+    color: #675d50;
+    stroke: #675d50;
   }
   60% {
     color: #abc4aa;
@@ -30,10 +31,7 @@ h2 {
   }
 }
 
-body {
-  /* background-color: ; */
-}
-
+/* style */
 .header {
   background-color: #675d50;
   text-align: center;
