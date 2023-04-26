@@ -9,12 +9,15 @@ h3 {
   margin: 0;
 }
 
-/* common */
-
-h3 {
-  font-size: 25px;
+input {
+  font-family: inherit;
 }
 
+textarea {
+  font-family: inherit;
+}
+
+/* common */
 .blink {
   animation: blink 1s linear infinite;
   -webkit-animation: blink 1s linear infinite;
@@ -66,8 +69,19 @@ h3 {
   background-color: #fff;
 }
 
-.write h2 {
+.write h3 {
   text-align: center;
+  font-size: 25px;
+}
+
+.write input::placeholder {
+  font-size: 13px;
+  color: #bdbdbd;
+}
+
+.write textarea::placeholder {
+  font-size: 13px;
+  color: #bdbdbd;
 }
 
 .memo-list {
