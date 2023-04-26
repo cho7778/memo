@@ -55,6 +55,17 @@ textarea {
   margin: 0 auto;
   padding: 0 50px;
   display: flow-root;
+  position: relative;
+}
+
+.btn-allclear {
+  position: absolute;
+  right: 5%;
+  top: 2%;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  background-color: #abc4aa;
 }
 
 .write {

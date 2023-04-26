@@ -20,6 +20,14 @@
         <h1 class="blink">메모는 성공을 가져온다.</h1>
       </header>
       <div class="l_wrapper">
+        <button
+          type="button"
+          class="btn-allclear"
+          id="btn-allclear"
+          onclick="clearAllMemos()"
+        >
+          Clear All<br />
+        </button>
         <section class="write">
           <h2>자유롭게 메모하세요📝</h2>
           <input
@@ -42,6 +50,7 @@
         <section id="display" class="memo-list"></section>
       </div>
     </main>
+
     <script>
       const targetInput = document.querySelector("#title");
       const targetTxt = document.querySelector("#content");
@@ -51,19 +60,8 @@
       memoList = memoList ?? [];
       render();
 
-      //   console.log(localStorage.getItem);
-
-      // setItem() - key, value 추가
-      // getItem() - value 읽어 오기
-      // removeItem() - item 삭제
-      // clear() - 도메인 내의 localStorage 값 삭제
-      // length - 전체 item 갯수
-      // key() - index로 key값 찾기
-
       // 렌더링
       function render() {
-        const data = JSON.parse(localStorage.getItem("memoList"));
-
         for (let i = 0; i < memoList.length; i++) {
           const memoCard = `<div class="memo${i + 1} memo-item">
                 <h3></h3>
@@ -74,11 +72,8 @@
           const memoTitle = display.querySelector(`.memo${i + 1} h3`);
           const memoTxt = display.querySelector(`.memo${i + 1} p`);
 
-          memoTitle.textContent = data[i].title;
-          memoTxt.textContent = data[i].content;
-
-          console.log(memoTitle.textContent);
-          console.log(memoTxt.textContent);
+          memoTitle.textContent = memoList[i].title;
+          memoTxt.textContent = memoList[i].content;
         }
       }
 
@@ -86,7 +81,6 @@
       function addMemo() {
         const title = targetInput.value;
         const content = targetTxt.value;
-        // console.log(title, content);
 
         if (title && content) {
           memoList.push({ title, content });
@@ -110,29 +104,38 @@
       }
 
       // 삭제
-
       function deleteMemo(event) {
-        const response = confirm("정말 삭제하시겠습니까?");
-        if (response) {
-          // 로컬스토리지에서 삭제
-          const getTitle = event.target.parentElement.querySelector("h3");
-          const getContent = event.target.parentElement.querySelector("p");
-          const targetDiv = event.target.parentElement;
+        const responseDelete = confirm("정말 삭제하시겠습니까?");
+        if (!reponseDelete) return;
 
-          memoList = memoList.filter(
-            (item) =>
-              item.title !== getTitle.textContent &&
-              item.content.textContent !== getContent
-          );
+        const getTitle = event.target.parentElement.querySelector("h3");
+        const getContent = event.target.parentElement.querySelector("p");
+        const targetDiv = event.target.parentElement;
 
-          localStorage.setItem("memoList", JSON.stringify(memoList));
+        memoList = memoList.filter(
+          (item) =>
+            item.title !== getTitle.textContent &&
+            item.content.textContent !== getContent
+        );
 
-          // 화면에서 제거
-          targetDiv.remove();
-        }
+        localStorage.setItem("memoList", JSON.stringify(memoList));
+
+        targetDiv.remove();
       }
 
-      // 수정
+      // 초기화
+      function clearAllMemos() {
+        const responseClear = confirm("메모장을 초기화하시겠습니까?");
+        if (!responseClear) return;
+
+        memoList = [];
+        localStorage.clear();
+
+        const allMemos = document.querySelectorAll(".memo-item");
+        for (let i = 0; i < allMemos.length; i++) {
+          allMemos[i].remove();
+        }
+      }
     </script>
   </body>
 </html>
