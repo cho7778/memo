@@ -52,7 +52,6 @@ textarea {
 
 .l_wrapper {
   max-width: 1500px;
-  /* box-shadow: inset 0 0 10px red; */
   margin: 0 auto;
   padding: 0 50px;
   display: flow-root;
@@ -69,7 +68,7 @@ textarea {
   background-color: #fff;
 }
 
-.write h3 {
+.write h2 {
   text-align: center;
   font-size: 25px;
 }
@@ -88,8 +87,6 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  /* box-shadow: inset 0 0 10px green; */
-  /* justify-content: space-between; */
   filter: drop-shadow(0 0 17px rgba(195, 197, 192, 0.3));
   position: relative;
 }
@@ -99,7 +96,6 @@ textarea {
   height: 281px;
   box-sizing: border-box;
   padding: 20px;
-  /* border: 1px solid #000; */
   background-color: #f3deba;
   height: auto;
   aspect-ratio: 416 / 395;
