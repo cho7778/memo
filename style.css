@@ -2,11 +2,19 @@
 body {
   margin: 0;
 }
+
 h1,
-h2 {
+h2,
+h3 {
   margin: 0;
 }
+
 /* common */
+
+h3 {
+  font-size: 25px;
+}
+
 .blink {
   animation: blink 1s linear infinite;
   -webkit-animation: blink 1s linear infinite;

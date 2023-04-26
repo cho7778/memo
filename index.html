@@ -21,8 +21,13 @@
       </header>
       <div class="l_wrapper">
         <section class="write">
-          <h2>자유롭게 메모하세요</h2>
-          <input type="text" name="" id="title" placeholder="제목" />
+          <h2>자유롭게 메모하세요📝</h2>
+          <input
+            type="text"
+            name=""
+            id="title"
+            placeholder="제목을 입력해주세요."
+          />
           <textarea
             name=""
             id="content"
@@ -59,12 +64,12 @@
 
         for (let i = 0; i < memoList.length; i++) {
           const memoCard = `<div class="memo${i + 1} memo-item">
-                <h2></h2>
+                <h3></h3>
                 <button type="button" onClick="deleteMemo(event)" id="btn-delete">삭제</button>
                 <p></p>
                 </div>`;
           display.insertAdjacentHTML("beforeend", memoCard);
-          const memoTitle = display.querySelector(`.memo${i + 1} h2`);
+          const memoTitle = display.querySelector(`.memo${i + 1} h3`);
           const memoTxt = display.querySelector(`.memo${i + 1} p`);
 
           memoTitle.textContent = data[i].title;
@@ -91,7 +96,7 @@
         display.insertAdjacentHTML(
           `beforeend`,
           `<div class="memo-item">
-                <h2>${targetInput.value}</h2>
+                <h3>${targetInput.value}</h3>
                 <button type="button" onClick="deleteMemo(event)" id="btn-delete">삭제</button>
                     <p>${targetTxt.value}</p>
                 </div>`
@@ -107,7 +112,7 @@
         const response = confirm("정말 삭제하시겠습니까?");
         if (response) {
           // 로컬스토리지에서 삭제
-          const getTitle = event.target.parentElement.querySelector("h2");
+          const getTitle = event.target.parentElement.querySelector("h3");
           const getContent = event.target.parentElement.querySelector("p");
           const targetDiv = event.target.parentElement;
 
