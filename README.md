@@ -4,5 +4,5 @@
   - 기능: 메모 추가, 삭제, 초기화(메모 전체 삭제)
 
 ## Versions
-  - Vanilla JavaScript
-  - React
+  - Vanilla JavaScript(April 2023)
+  - React(expected in May 2023)
